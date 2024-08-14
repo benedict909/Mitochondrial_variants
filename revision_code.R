@@ -94,10 +94,10 @@ rev_table=cbind(temp1=paste0(rev_table[,1], "_", rev_table[,2], "_", rev_table[,
 disease=cbind(temp1=paste0(disease[,2], "_", disease[,3], "_", disease[,4]), disease)
 polymorphisms=cbind(temp1=paste0(polymorphisms[,2], "_", polymorphisms[,3], "_", polymorphisms[,4]), polymorphisms)
 rev_table=left_join(rev_table, disease, by="temp1",relationship = "many-to-many")
-rev_table=rev_table[,-(15:19)]
-rev_table=rev_table[,-19]
+rev_table=rev_table[,-(18:22)]
+rev_table=rev_table[,-22]
 rev_table=left_join(rev_table, polymorphisms, by="temp1")
-rev_table=rev_table[,-(19:26)]
+rev_table=rev_table[,-(22:29)]
 rev_table=rev_table[,-1]
 rev_table[is.na(rev_table)] <- "-"
 
@@ -114,13 +114,13 @@ rev_cols=c("POS",
            "Codons",
            "SIFT",
            "PolyPhen",
+	   "CLIN_SIG",
+	   "SOMATIC",
+           "PUBMED",
            "Homoplasmy",
            "Heteroplasmy",
            "Disease",
            "Status",
-	   "SOMATIC",
-	   "CLIN_SIG",
-           "PUBMED",
            "GB_Count",
            "GB_Frequency")
 
