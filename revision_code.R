@@ -68,7 +68,10 @@ keep_columns=c("Uploaded_variation",
                "Amino_acids",
                "Codons",
                "SIFT",
-               "PolyPhen")
+               "PolyPhen",
+		"CLIN_SIG",
+		"SOMATIC",
+		"PUBMED")
 VEP_redu=VEP[keep_columns] # why is this 49882 and not 49708?
 #example 12986 and 12987, where the gene is different for the same site. This is fine
 
@@ -86,7 +89,7 @@ rev_table=matrix(ncol=3, nrow=nrow(VEP_redu))
 rev_table[,1]=as.numeric(gsub("_.*", "", gsub("MT_", "", VEP_redu$Uploaded_variation)))
 rev_table[,2]=gsub("/.*", "", gsub(".*_", "", VEP_redu$Uploaded_variation))
 rev_table[,3]=gsub(".*/", "", gsub(".*_", "", VEP_redu$Uploaded_variation))
-rev_table=cbind(rev_table, VEP_redu[,4:13])
+rev_table=cbind(rev_table, VEP_redu[,4:16])
 rev_table=cbind(temp1=paste0(rev_table[,1], "_", rev_table[,2], "_", rev_table[,3]),rev_table)
 disease=cbind(temp1=paste0(disease[,2], "_", disease[,3], "_", disease[,4]), disease)
 polymorphisms=cbind(temp1=paste0(polymorphisms[,2], "_", polymorphisms[,3], "_", polymorphisms[,4]), polymorphisms)
@@ -98,16 +101,16 @@ rev_table=rev_table[,-(19:26)]
 rev_table=rev_table[,-1]
 rev_table[is.na(rev_table)] <- "-"
 
-rev_cols=c("Position",
-           "Reference",
-           "Variant",
+rev_cols=c("POS",
+           "REF",
+           "ALT",
            "Consequence",
            "Symbol",
            "Gene",
-           "Feature type",
+           "Feature_type",
            "Feature",
            "Biotype",
-           "Amino acids",
+           "Amino_acids",
            "Codons",
            "SIFT",
            "PolyPhen",
@@ -115,8 +118,11 @@ rev_cols=c("Position",
            "Heteroplasmy",
            "Disease",
            "Status",
-           "GB Count",
-           "GB Frequency")
+	   "SOMATIC",
+	   "CLIN_SIG",
+           "PUBMED",
+           "GB_Count",
+           "GB_Frequency")
 
 colnames(rev_table)=rev_cols
 
