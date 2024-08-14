@@ -5,8 +5,8 @@
 echo "Dwonloading latest references from Mitomap"
 echo
 
-wget https://www.mitomap.org/cgi-bin/polymorphisms.cgi
-wget https://www.mitomap.org/cgi-bin/disease.cgi
+wget -O polymorphisms.cgi https://www.mitomap.org/cgi-bin/polymorphisms.cgi
+wget -O disease.cgi https://www.mitomap.org/cgi-bin/disease.cgi
 
 echo
 
