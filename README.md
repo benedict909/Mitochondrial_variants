@@ -1,6 +1,11 @@
 # Mitochondrial Variants
 This code was designed to create a table of mitochondrial variants, their associated amino acid changes (if any), which features these changes affect, predicted consequences (with SIFT and PolyPhen scores), associated diseases, and the frequency of these variants in the general population. Sources for this information include Ensembl Variant Effect Predictor, MitoMap, and GenomeNet.
 
+## Installation
+
+`git clone -b main git@github.com:benedict909/Mitochondrial_variants.git`
+
+
 ## Code:
 
 * revision_code.R — used to create the final output file, rev_table.txt

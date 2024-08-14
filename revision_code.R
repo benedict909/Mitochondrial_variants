@@ -18,7 +18,7 @@
 library(dplyr)
 
 # Read in reference mitochondrial genome
-setwd("~/Documents/Projects/MAESTER")
+#setwd("~/Documents/Projects/MAESTER")
 
 mito_ref_orig=read.table("mito_reference.txt", stringsAsFactors = F) # https://www.genome.jp/dbget-bin/www_bget?-f+refseq+NC_012920
 mito_ref=NULL
@@ -75,10 +75,10 @@ VEP_redu=VEP[keep_columns] # why is this 49882 and not 49708?
 write.table(VEP_redu, "VEP_redu.txt", sep="\t", row.names = T, quote=F)
 
 # Disease data from MitoMap
-disease=read.table("disease.cgi.txt", sep="\t", stringsAsFactors = F, header=T) # https://www.mitomap.org/foswiki/bin/view/MITOMAP/Resources
+disease=read.table("disease.cgi", sep="\t", stringsAsFactors = F, header=T) # https://www.mitomap.org/foswiki/bin/view/MITOMAP/Resources
 
 # Polymorphism data from MitoMap
-polymorphisms=read.table("polymorphisms.cgi.txt", sep="\t", stringsAsFactors = F, header=T) # https://www.mitomap.org/foswiki/bin/view/MITOMAP/Resources
+polymorphisms=read.table("polymorphisms.cgi", sep="\t", stringsAsFactors = F, header=T) # https://www.mitomap.org/foswiki/bin/view/MITOMAP/Resources
 
 
 # Create *pretty* table (sorry for the ugly code!)
@@ -90,7 +90,7 @@ rev_table=cbind(rev_table, VEP_redu[,4:13])
 rev_table=cbind(temp1=paste0(rev_table[,1], "_", rev_table[,2], "_", rev_table[,3]),rev_table)
 disease=cbind(temp1=paste0(disease[,2], "_", disease[,3], "_", disease[,4]), disease)
 polymorphisms=cbind(temp1=paste0(polymorphisms[,2], "_", polymorphisms[,3], "_", polymorphisms[,4]), polymorphisms)
-rev_table=left_join(rev_table, disease, by="temp1")
+rev_table=left_join(rev_table, disease, by="temp1",relationship = "many-to-many")
 rev_table=rev_table[,-(15:19)]
 rev_table=rev_table[,-19]
 rev_table=left_join(rev_table, polymorphisms, by="temp1")
@@ -120,6 +120,6 @@ rev_cols=c("Position",
 
 colnames(rev_table)=rev_cols
 
-write.table(rev_table, "rev_table.txt", sep="\t", row.names = T, quote=F) # need to remove first column (minus the header) upon first use
+write.table(rev_table, "rev_table_bendy.txt", sep="\t", row.names = F, quote=F) # need to remove first column (minus the header) upon first use
 
 
