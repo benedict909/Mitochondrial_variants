@@ -5,6 +5,8 @@ This code was designed to create a table of mitochondrial variants, their associ
 
 `git clone -b main git@github.com:benedict909/Mitochondrial_variants.git`
 
+then run `bash bendy_prep.sh` to make the modified output. 
+
 
 ## Code:
 
@@ -41,8 +43,20 @@ This code was designed to create a table of mitochondrial variants, their associ
 9. Biotype — (VEP) type of transcript or regulatory feature: protein coding, tRNA, or rRNA. More are present in VEP but not associated with mitochondria
 10. Amino acids — (VEP) any amino acid changes that occur due to the variant
 11. Codons — (VEP) if an amino acid change occurs, this is shows which codon was changed, with the affected nucleotide in the capital letter
-12. SIFT — (VEP) SIFT prediction score for whether an amino acid change will affect protein function (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC168916/)
-13. PolyPhen — (VEP) PolyPhen prediction score for whether an amino acid change will affect protein function (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4480630/)
+12. SIFT — (VEP) SIFT prediction score for whether an amino acid change will affect protein function (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC168916
+        
+        
+        
+        
+        
+        /)
+13. PolyPhen — (VEP) PolyPhen prediction score for whether an amino acid change will affect protein function (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4480630
+        
+        
+        
+        
+        
+        /)
 14. Homoplasmy* — (MitoMap)
 15. Heteroplasmy* — (MitoMap)
 16. Disease* — (MitoMap) diseases associated with a particular variant
